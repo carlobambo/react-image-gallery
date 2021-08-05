@@ -524,10 +524,13 @@ class ImageGallery extends React.Component {
 
       // Don't add thumbnails if there is none
       if (showThumbnails && item.thumbnail) {
+        const isActive =  currentIndex === index;
+        const thumbnailActiveClass = item.thumbnailActiveClass && isActive ? ` ${item.thumbnailActiveClass}` : '';
         const igThumbnailClass = clsx(
           'image-gallery-thumbnail',
           thumbnailClass,
-          { active: currentIndex === index },
+          thumbnailActiveClass,
+          { active: isActive },
         );
         thumbnails.push(
           <button
